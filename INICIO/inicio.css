@@ -698,6 +698,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    box-sizing: border-box; /* ← AÑADE ESTA LÍNEA */
 }
 .btn-pag{
     width: 150px;
@@ -714,6 +715,7 @@ body {
     transition: 1s;
     transform: scale(1,1);
 }
+
 
 
 
