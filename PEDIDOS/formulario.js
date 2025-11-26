@@ -181,7 +181,7 @@ function enviarAGmail(event) {
     const asunto = `🎮 PEDIDO - ${nombre} ${apellido}`;
     const mailtoLink = `mailto:${emailDestino}?subject=${encodeURIComponent(asunto)}&body=${encodeURIComponent(cuerpoMensaje)}`;
     
-    // Mostrar alerta con instrucciones claras
+    // Mostrar alerta con instrucciones claras - ESTO SE EJECUTA CADA VEZ
     alert(`📧 SE ABRIRÁ GMAIL\n\n📎 INSTRUCCIONES IMPORTANTES:\n\n1. Se abrirá Gmail automáticamente\n2. DEBES ADJUNTAR MANUALMENTE la foto del comprobante de transferencia\n3. Revisa que todos los datos estén correctos\n4. Envía el correo con el comprobante adjunto\n\n✅ El pedido se procesará una vez recibido el comprobante`);
     
     // Abrir cliente de correo
