@@ -78,11 +78,13 @@
                 </div>
             </div>
 
-            <div class="grupo-formulario">
-                <label for="comprobante">Comprobante de Transferencia <span class="requerido">*</span></label>
-                <input type="file" id="comprobante" name="comprobante" 
-                       accept=".jpg,.jpeg,.png,.pdf,.webp" required>
-                <small class="texto-ayuda">Sube una foto o PDF del comprobante</small>
+            <!-- RECORDATORIO DEL COMPROBANTE -->
+            <div class="recordatorio-comprobante">
+                <div class="icono-alerta">📎</div>
+                <div class="texto-alerta">
+                    <h4>IMPORTANTE: Adjuntar Comprobante</h4>
+                    <p>Después de enviar este formulario, se abrirá Gmail. <strong>DEBES ADJUNTAR MANUALMENTE</strong> la foto del comprobante de transferencia antes de enviar el correo.</p>
+                </div>
             </div>
         </div>
 
@@ -97,15 +99,17 @@
         </div>
 
         <div class="nota-importante">
-            <h4>📝 Importante:</h4>
-            <p>• Una vez realizada la transferencia, sube el comprobante</p>
-            <p>• Tu pedido será procesado dentro de las 24 horas</p>
-            <p>• Recibirás un email de confirmación</p>
-            <p>• Verifica que el monto total coincida</p>
+            <h4>📝 Pasos a Seguir:</h4>
+            <p>1. ✅ Realiza la transferencia bancaria</p>
+            <p>2. 📸 Toma una foto del comprobante</p>
+            <p>3. 📧 Envía este formulario (se abrirá Gmail)</p>
+            <p>4. 📎 <strong>ADJUNTA MANUALMENTE</strong> el comprobante en Gmail</p>
+            <p>5. 📩 Envía el correo con el comprobante adjunto</p>
+            <p>• Tu pedido será procesado en 24 horas</p>
         </div>
 
         <button type="submit" class="btn-enviar">
-            🚀 Enviar Pedido del Carrito
+            📧 Abrir Gmail para Enviar Pedido
         </button>
 
         <div class="loading" id="loading">
@@ -119,6 +123,4 @@
     </form>
 </body>
 <script src="formulario.js"></script>
-
 </html>
-
