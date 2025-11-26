@@ -565,6 +565,7 @@ body{
     color: white;
     padding: 10px;
     text-align: center;
+    width: 100%;
 }
 /*boton ofertas*/
 .ofertas{
@@ -711,5 +712,6 @@ body{
     transition: 1s;
     transform: scale(1,1);
 }
+
 
 
