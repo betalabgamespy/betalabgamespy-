@@ -1,3 +1,5 @@
+// formulario.js - Código completo para el formulario de pedidos
+
 // Variable global para el carrito
 let carrito = [];
 
@@ -28,7 +30,7 @@ function vaciarCarrito() {
     alert('✅ Carrito vaciado correctamente');
 }
 
-// FUNCIÓN CORREGIDA para formatear números
+// FUNCIÓN para formatear números
 function formatearNumeroConCeros(numero) {
     console.log('🔢 Formateando número:', numero);
     
@@ -52,7 +54,7 @@ function formatearNumeroConCeros(numero) {
     return numero.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 }
 
-// FUNCIÓN MEJORADA para calcular precios
+// FUNCIÓN para calcular precios
 function calcularPrecios(item) {
     console.log('💰 Calculando precios para:', item);
     
@@ -81,7 +83,7 @@ function mostrarResumenCarrito(carrito) {
     console.log('🛍️ Mostrando resumen del carrito:', carrito);
     
     const tituloElement = document.getElementById('nombreJuego');
-    const contenedorResumen = document.getElementById('resumen-carrito') || crearContenedorResumen();
+    const contenedorResumen = document.getElementById('resumen-carrito');
     
     if (!carrito || carrito.length === 0) {
         console.log('📭 Carrito vacío, mostrando estado vacío');
@@ -168,35 +170,6 @@ function calcularTotalCarrito(carrito) {
     return total;
 }
 
-// FUNCIÓN PARA ENVIAR EL FORMULARIO POR CORREO SIMPLE
-function enviarFormulario(event) {
-    event.preventDefault(); // Prevenir recarga de página
-    console.log('📤 Iniciando envío de formulario...');
-
-    // Obtener datos del formulario
-    const nombre = document.getElementById('nombre')?.value || 'No proporcionado';
-    const apellido = document.getElementById('apellido')?.value || 'No proporcionado';
-    const email = document.getElementById('email')?.value || 'No proporcionado';
-    const telefono = document.getElementById('telefono')?.value || 'No proporcionado';
-    const direccion = document.getElementById('direccion')?.value || 'No proporcionado';
-    const ciudad = document.getElementById('ciudad')?.value || 'No proporcionado';
-    const metodoPago = document.getElementById('metodo-pago')?.value || 'No especificado';
-    const comprobante = document.getElementById('comprobante')?.files.length > 0 ? 'Sí adjuntó comprobante' : 'No adjuntó comprobante';
-
-    // Obtener datos del carrito
-    const carrito = obtenerDatosCarrito();
-    const total = calcularTotalCarrito(carrito);
-    const totalFormateado = formatearNumeroConCeros(total) + ' Gs';
-
-    // Crear contenido del correo
-    const contenidoCorreo = crearContenidoCorreo({
-        nombre, apellido, email, telefono, direccion, ciudad, metodoPago, comprobante
-    }, carrito, totalFormateado);
-
-    // Enviar por correo simple
-    enviarCorreoSimple(contenidoCorreo, { nombre, apellido });
-}
-
 // FUNCIÓN PARA CREAR EL CONTENIDO DEL CORREO
 function crearContenidoCorreo(datos, carrito, total) {
     let contenido = `
@@ -208,9 +181,7 @@ NUEVO PEDIDO - BETALAB GAMES PY
 👤 Nombre: ${datos.nombre} ${datos.apellido}
 📧 Email: ${datos.email}
 📞 Teléfono: ${datos.telefono}
-📍 Dirección: ${datos.direccion}
-🏙️ Ciudad: ${datos.ciudad}
-💳 Método de pago: ${datos.metodoPago}
+💬 Mensaje: ${datos.mensaje || 'No dejó mensaje'}
 🧾 Comprobante: ${datos.comprobante}
 
 🛒 DETALLES DEL PEDIDO:
@@ -232,6 +203,14 @@ NUEVO PEDIDO - BETALAB GAMES PY
 ────────────────────────────
 💰 TOTAL DEL PEDIDO: ${total}
 ────────────────────────────
+
+🏦 DATOS BANCARIOS USADOS:
+────────────────────────────
+Banco: UENO BANK
+Cuenta: 619935527
+Titular: Gonzalo Rojas
+CI: 6525197
+
 🕒 Fecha: ${new Date().toLocaleString('es-PY')}
 📦 BETALAB GAMES PY
     `;
@@ -241,7 +220,7 @@ NUEVO PEDIDO - BETALAB GAMES PY
 
 // FUNCIÓN CORREO SIMPLE - Abre el cliente de correo
 function enviarCorreoSimple(contenido, datos) {
-    const emailDestino = 'betalabgamespy@gmail.com'; // Cambia por tu email
+    const emailDestino = 'betalabgamespedidos@gmail.com'; // CAMBIA POR TU EMAIL REAL
     const subject = `🎮 NUEVO PEDIDO - ${datos.nombre} ${datos.apellido}`;
     
     const mailtoLink = `mailto:${emailDestino}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(contenido)}`;
@@ -250,30 +229,36 @@ function enviarCorreoSimple(contenido, datos) {
     console.log('Asunto:', subject);
     console.log('Contenido:', contenido);
     
-    // Abrir cliente de correo
-    window.location.href = mailtoLink;
+    // Mostrar loading
+    mostrarLoading(true);
     
-    // Mostrar mensaje de éxito después de un tiempo
+    // Abrir cliente de correo después de un breve delay
     setTimeout(() => {
-        const confirmacion = confirm(
-            '✅ Pedido preparado para enviar.\n\n' +
-            'Se abrió tu cliente de correo. ¿Ya enviaste el correo?\n\n' +
-            'Si no se abrió el correo, por favor envía manualmente a:\n' +
-            'betalabgamespy@gmail.com\n\n' +
-            '¿Quieres vaciar el carrito?'
-        );
+        window.location.href = mailtoLink;
+        mostrarLoading(false);
         
-        if (confirmacion) {
-            vaciarCarrito();
-        }
-    }, 2000);
+        // Mostrar mensaje de éxito después de un tiempo
+        setTimeout(() => {
+            const confirmacion = confirm(
+                '✅ Pedido preparado para enviar.\n\n' +
+                'Se abrió tu cliente de correo. ¿Ya enviaste el correo?\n\n' +
+                'Si no se abrió el correo, por favor envía manualmente a:\n' +
+                'betalabgamespy@gmail.com\n\n' +
+                '¿Quieres vaciar el carrito?'
+            );
+            
+            if (confirmacion) {
+                vaciarCarrito();
+                mostrarMensajeExito();
+            }
+        }, 1000);
+    }, 1500);
 }
 
 // FUNCIÓN PARA MANEJAR EL ENVÍO DEL FORMULARIO
 function manejarEnvioPedido(event) {
-    if (event) {
-        event.preventDefault();
-    }
+    event.preventDefault();
+    console.log('📤 Procesando envío de pedido...');
     
     // Verificar que el carrito no esté vacío
     const carrito = obtenerDatosCarrito();
@@ -282,17 +267,73 @@ function manejarEnvioPedido(event) {
         return;
     }
     
-    // Verificar datos mínimos del formulario
-    const nombre = document.getElementById('nombre')?.value;
-    const telefono = document.getElementById('telefono')?.value;
-    
-    if (!nombre || !telefono) {
-        alert('❌ Por favor completa al menos tu nombre y teléfono antes de enviar el pedido.');
+    // Obtener datos del formulario
+    const nombre = document.getElementById('nombre').value.trim();
+    const apellido = document.getElementById('apellido').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const telefono = document.getElementById('telefono').value.trim();
+    const mensaje = document.getElementById('mensaje').value.trim();
+    const comprobante = document.getElementById('comprobante').files.length > 0 ? 
+        'Sí adjuntó comprobante' : 'No adjuntó comprobante';
+
+    // Validar campos requeridos
+    if (!nombre || !apellido || !email || !telefono) {
+        alert('❌ Por favor completa todos los campos requeridos (*)');
         return;
     }
-    
-    // Enviar formulario
-    enviarFormulario(event);
+
+    // Validar email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        alert('❌ Por favor ingresa un email válido');
+        return;
+    }
+
+    // Validar teléfono (mínimo 8 dígitos)
+    const telefonoLimpio = telefono.replace(/\D/g, '');
+    if (telefonoLimpio.length < 8) {
+        alert('❌ Por favor ingresa un número de teléfono válido');
+        return;
+    }
+
+    // Obtener datos del carrito y calcular total
+    const total = calcularTotalCarrito(carrito);
+    const totalFormateado = formatearNumeroConCeros(total) + ' Gs';
+
+    // Crear contenido del correo
+    const contenidoCorreo = crearContenidoCorreo({
+        nombre, apellido, email, telefono, mensaje, comprobante
+    }, carrito, totalFormateado);
+
+    // Enviar por correo simple
+    enviarCorreoSimple(contenidoCorreo, { nombre, apellido });
+}
+
+// FUNCIÓN PARA MOSTRAR/OCULTAR LOADING
+function mostrarLoading(mostrar) {
+    const loadingElement = document.getElementById('loading');
+    if (loadingElement) {
+        loadingElement.style.display = mostrar ? 'block' : 'none';
+    }
+}
+
+// FUNCIÓN PARA MOSTRAR MENSAJE DE ÉXITO
+function mostrarMensajeExito() {
+    const mensajeExito = document.getElementById('mensajeExito');
+    if (mensajeExito) {
+        mensajeExito.style.display = 'block';
+        setTimeout(() => {
+            mensajeExito.style.display = 'none';
+        }, 5000);
+    }
+}
+
+// FUNCIÓN PARA ACTUALIZAR MONTO DE TRANSFERENCIA
+function actualizarMontoTransferencia(precio) {
+    const montoValor = document.getElementById('monto-valor');
+    if (montoValor) {
+        montoValor.textContent = precio;
+    }
 }
 
 // FUNCIÓN PARA MOSTRAR VISTA PREVIA DEL PEDIDO
@@ -325,7 +366,7 @@ document.addEventListener('DOMContentLoaded', function() {
     carrito = obtenerDatosCarrito();
     console.log('📦 Carrito al cargar:', carrito);
     
-    // Mostrar resumen
+    // Mostrar resumen del carrito
     mostrarResumenCarrito(carrito);
     
     // Actualizar monto de transferencia
@@ -333,55 +374,40 @@ document.addEventListener('DOMContentLoaded', function() {
     actualizarMontoTransferencia(formatearNumeroConCeros(total) + ' Gs');
     
     // Agregar event listener al formulario
-    const formularioPedido = document.getElementById('formulario-pedido');
+    const formularioPedido = document.getElementById('formPedidos');
     if (formularioPedido) {
         formularioPedido.addEventListener('submit', manejarEnvioPedido);
         console.log('✅ Event listener agregado al formulario');
     }
     
-    // Agregar botón de vista previa si no existe
-    if (!document.getElementById('btnVistaPrevia')) {
-        const btnVistaPrevia = document.createElement('button');
-        btnVistaPrevia.id = 'btnVistaPrevia';
-        btnVistaPrevia.type = 'button';
-        btnVistaPrevia.className = 'btn-vista-previa';
-        btnVistaPrevia.textContent = '👁️ Vista Previa del Pedido';
-        btnVistaPrevia.onclick = mostrarVistaPrevia;
-        
-        const formulario = document.getElementById('formulario-pedido');
-        if (formulario) {
-            formulario.appendChild(btnVistaPrevia);
-        }
+    // Agregar botón de vista previa
+    const btnVistaPrevia = document.createElement('button');
+    btnVistaPrevia.type = 'button';
+    btnVistaPrevia.className = 'btn-vista-previa';
+    btnVistaPrevia.innerHTML = '👁️ Vista Previa del Pedido';
+    btnVistaPrevia.onclick = mostrarVistaPrevia;
+    btnVistaPrevia.style.margin = '10px 0';
+    btnVistaPrevia.style.padding = '10px';
+    btnVistaPrevia.style.backgroundColor = '#17a2b8';
+    btnVistaPrevia.style.color = 'white';
+    btnVistaPrevia.style.border = 'none';
+    btnVistaPrevia.style.borderRadius = '5px';
+    btnVistaPrevia.style.cursor = 'pointer';
+    
+    const formulario = document.getElementById('formPedidos');
+    const btnEnviar = document.querySelector('.btn-enviar');
+    if (formulario && btnEnviar) {
+        formulario.insertBefore(btnVistaPrevia, btnEnviar);
     }
 });
-
-function crearContenedorResumen() {
-    const contenedor = document.createElement('div');
-    contenedor.id = 'resumen-carrito';
-    contenedor.className = 'resumen-carrito';
-    
-    const nombreJuegoElement = document.getElementById('nombreJuego');
-    if (nombreJuegoElement && nombreJuegoElement.parentNode) {
-        nombreJuegoElement.parentNode.insertBefore(contenedor, nombreJuegoElement.nextSibling);
-        return contenedor;
-    }
-    return null;
-}
-
-function actualizarMontoTransferencia(precio) {
-    const montoValor = document.getElementById('monto-valor');
-    if (montoValor) {
-        montoValor.textContent = precio;
-    }
-}
 
 // Hacer funciones globales
 window.vaciarCarrito = vaciarCarrito;
 window.manejarEnvioPedido = manejarEnvioPedido;
 window.mostrarVistaPrevia = mostrarVistaPrevia;
-window.enviarFormulario = enviarFormulario;
 
-console.log('✅ pedidos.js cargado - Funciones disponibles:');
+console.log('✅ formulario.js cargado - Funciones disponibles:');
 console.log('- vaciarCarrito()');
 console.log('- manejarEnvioPedido()');
 console.log('- mostrarVistaPrevia()');
+
