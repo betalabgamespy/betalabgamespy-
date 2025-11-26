@@ -686,7 +686,7 @@ body {
 .fondo{
     text-align: center;
     width: 100%;            /* Ancho completo del contenedor */
-    max-width: 550px; 
+    max-width: 500px; 
     height: 200px;
     aspect-ratio: 1 / 1;    /* Relación 1:1 = cuadrado perfecto */
     background-image: url(https://i.pinimg.com/1200x/5b/64/d4/5b64d490ece1575949c2b358d57739a0.jpg);
@@ -715,6 +715,7 @@ body {
     transition: 1s;
     transform: scale(1,1);
 }
+
 
 
 
