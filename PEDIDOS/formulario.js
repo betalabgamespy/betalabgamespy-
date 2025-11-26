@@ -140,7 +140,7 @@ function calcularTotalCarrito(carrito) {
     return total;
 }
 
-// FUNCIÓN SIMPLE PARA ENVIAR A GMAIL
+// FUNCIÓN MEJORADA PARA ENVIAR A GMAIL CON CAPTURA DE PANTALLA
 function enviarAGmail(event) {
     event.preventDefault();
     
@@ -173,15 +173,60 @@ function enviarAGmail(event) {
     });
     
     cuerpoMensaje += `TOTAL: ${totalFormateado}\n\n`;
-    cuerpoMensaje += `Fecha: ${new Date().toLocaleString('es-PY')}`;
-    
+    cuerpoMensaje += `Fecha: ${new Date().toLocaleString('es-PY')}\n\n`;
+    cuerpoMensaje += `📎 IMPORTANTE: Por favor, adjunte la foto del comprobante de transferencia en este correo.`;
+
     // Enviar por Gmail
     const emailDestino = 'betalabgamespy@gmail.com'; // CAMBIA POR TU GMAIL
     const asunto = `🎮 PEDIDO - ${nombre} ${apellido}`;
+    
+    // Crear enlace mailto mejorado
     const mailtoLink = `mailto:${emailDestino}?subject=${encodeURIComponent(asunto)}&body=${encodeURIComponent(cuerpoMensaje)}`;
     
+    // Mostrar instrucciones para adjuntar imagen
+    alert(`📧 Se abrirá tu cliente de correo.\n\n📎 POR FAVOR:\n1. Adjunta la foto del comprobante de transferencia\n2. Revisa que todos los datos estén correctos\n3. Envía el correo`);
+    
     // Abrir cliente de correo
-    window.location.href = mailtoLink;
+    window.open(mailtoLink, '_blank');
+    
+    // Mostrar mensaje adicional en la página
+    const mensajeExito = document.createElement('div');
+    mensajeExito.style.cssText = `
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: #1a1a2e;
+        color: white;
+        padding: 20px;
+        border-radius: 10px;
+        border: 2px solid #667eea;
+        z-index: 10000;
+        text-align: center;
+        max-width: 400px;
+    `;
+    mensajeExito.innerHTML = `
+        <h3>📧 Correo Listo</h3>
+        <p>Se abrió tu cliente de correo.</p>
+        <p><strong>No olvides adjuntar la foto del comprobante de transferencia</strong></p>
+        <button onclick="this.parentElement.remove()" style="
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        ">Entendido</button>
+    `;
+    document.body.appendChild(mensajeExito);
+}
+
+// Función alternativa para capturar pantalla (opcional)
+function capturarComprobante() {
+    // Esta función podría integrarse con una API de captura de pantalla
+    // Por ahora, solo muestra instrucciones
+    alert(`📸 Para capturar el comprobante:\n\n1. Toma una screenshot de tu comprobante\n2. Guárdala como imagen\n3. Adjúntala en el correo que se abrirá`);
 }
 
 // Al cargar la página
@@ -201,6 +246,27 @@ document.addEventListener('DOMContentLoaded', function() {
     if (formulario) {
         formulario.addEventListener('submit', enviarAGmail);
     }
+    
+    // Agregar botón para instrucciones de comprobante
+    const instruccionesBtn = document.createElement('button');
+    instruccionesBtn.textContent = '📸 ¿Cómo adjuntar comprobante?';
+    instruccionesBtn.type = 'button';
+    instruccionesBtn.style.cssText = `
+        background: #00b894;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin: 10px 0;
+        font-size: 14px;
+    `;
+    instruccionesBtn.onclick = capturarComprobante;
+    
+    const formContainer = document.querySelector('.form-container');
+    if (formContainer) {
+        formContainer.appendChild(instruccionesBtn);
+    }
 });
 
 function actualizarMontoTransferencia(precio) {
@@ -212,8 +278,6 @@ function actualizarMontoTransferencia(precio) {
 
 // Hacer funciones globales
 window.vaciarCarrito = vaciarCarrito;
-
-// Hacer funciones globales
-window.vaciarCarrito = vaciarCarrito;
-window.enviarPedidoGmail = enviarPedidoGmail;
+window.enviarAGmail = enviarAGmail;
+window.capturarComprobante = capturarComprobante;
 
