@@ -113,18 +113,12 @@
             <p>Procesando solicitud...</p>
         </div>
 
-        <form id="formulario-pedido" onsubmit="manejarEnvioPedido(event)">
-    <!-- Tus campos del formulario -->
-    <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
-    <input type="text" id="apellido" name="apellido" placeholder="Apellido">
-    <input type="email" id="email" name="email" placeholder="Email">
-    <input type="tel" id="telefono" name="telefono" placeholder="Teléfono" required>
-    <!-- ... más campos ... -->
-    
-    <button type="submit">📤 Enviar Pedido por Correo</button>
-</form>
+        <div class="mensaje-exito" id="mensajeExito">
+            ✅ ¡Pedido enviado correctamente! Te contactaremos dentro de 24 horas.
+        </div>
     </form>
 </body>
 <script src="formulario.js"></script>
 
 </html>
+
