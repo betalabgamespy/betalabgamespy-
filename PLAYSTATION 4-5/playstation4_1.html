@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playstation 4-5 pag 1</title>
+    <link rel="stylesheet" href="playstation4.css">
+</head>
+<!-- Botón flotante del carrito -->
+<div class="carrito-flotante" id="carritoFlotante">
+    <button class="btn-carrito-flotante" onclick="toggleCarritoFlotante()">
+        🛒
+        <span class="contador-carrito-flotante" id="contadorCarritoFlotante">0</span>
+    </button>
+    <div class="mini-carrito-flotante" id="miniCarritoFlotante">
+        <div class="header-mini-carrito">
+            <h4>Tu Carrito</h4>
+            <span class="total-mini-carrito" id="totalMiniCarrito">0 Gs</span>
+        </div>
+        <div class="contenido-mini-carrito" id="contenidoMiniCarrito">
+            <!-- Los productos se cargarán aquí -->
+        </div>
+        <div class="footer-mini-carrito">
+            <button class="btn-ver-carrito-completo" onclick="irAlCarrito()">Ver Carrito Completo</button>
+        </div>
+    </div>
+</div>
+<body>
+    <!--Botton flotante-->
+    <div class="floating-contact-tooltip">
+    <button class="floating-btn-tooltip" onclick="toggleTooltipMenu()">
+        <span class="btn-icon">👥</span>
+    </button>
+    
+    <div class="contact-tooltip-menu" id="tooltipMenu">
+        <div class="tooltip-item" onclick="openWhatsApp()">
+            <span class="tooltip-icon"><img src="/ICONOSGLOBALES/icono-whats.png" alt=""></span>
+            <span class="tooltip-text">WhatsApp</span>
+            <div class="tooltip">Chatear por WhatsApp</div>
+        </div>
+        <div class="tooltip-item" onclick="sendEmail()">
+            <span class="tooltip-icon"><img src="/ICONOSGLOBALES/icono-insta.png" alt=""></span>
+            <span class="tooltip-text">Instagram</span>
+            <div class="tooltip">Seguir en Instagram</div>
+        </div>
+        <div class="tooltip-item" onclick="sendEmail()">
+            <span class="tooltip-icon"><img src="/ICONOSGLOBALES/icono-face.png" alt=""></span>
+            <span class="tooltip-text">Facebook</span>
+            <div class="tooltip">Seguir en Facebook</div>
+        </div>
+
+    </div>
+</div>
+
+    <!-- Este es el header -->
+    <header class="header1">
+        <img class="Logoinicio" src="/ICONOSGLOBALES/logo 1.png" alt="Logo">
+        <h4 class="nombremarca1">BETALAB</h4>
+        <h4 class="nombremarca2">GAMES</h4>
+        <h4 class="nombremarca3">PY</h4>
+        </header>
+    <!--Buscador -->
+    <div class="buscador-container">
+        <input type="text" 
+        id="buscador-real-time" 
+        placeholder="🔍 Buscar videojuego...">
+        <div id="resultados-real-time" class="resultados-container"></div>
+    </div>
+    <header class="header2">
+</div>
+        <div">
+            <a class="navegador" href="/index.html" class="nav-link">Inicio</a>
+            <a class="navegador" href="../PLAYSTATION 2/playstation 2.html" class="nav-link">PS2</a>
+            <a class="navegador" href="../PLAYSTATION 3/playstation 3_1.html" class="nav-link">PS3</a>
+        </div>
+    </header>
+<h2 class="mas-vendidos">Juegos con más rebajas</h2>
+        <!-- Seccion de los juegos -->
+        <section class="seccion-juegos">
+            <article class="juegos">
+                <h4 class="titulo-juego">Fc 26 para PS4-PS5</h4>
+                    <img class="juego" src="https://i.pinimg.com/1200x/32/06/dd/3206dd46cb3cb8b2b8377119d199ed08.jpg" alt="">
+                    <h6 class="precio-ant">500.000 Gs</h6>
+                    <h5 class="precio-act">320.000 Gs</h5><button class="btn-compra" onclick="añadirAlCarrito('FC 26 para PS4-PS5')" class="btn-carrito">Añadir al carrito</button>
+            </article>
+            <article class="juegos">
+                <h4 class="titulo-juego">Silent Hill 2 PS5</h4>
+                    <img class="juego" src="https://i.pinimg.com/736x/90/22/15/90221580fd1f86d5659085ce35c77ce9.jpg" alt="">
+                    <h6 class="precio-ant">560.000 Gs</h6>
+                    <h5 class="precio-act">340.000 Gs</h5><button class="btn-compra" onclick="añadirAlCarrito('Silent Hill 2 PS5')" class="btn-carrito">Añadir al carrito</button>
+            </article>
+        </section>
+        <section class="seccion-juegos">
+            <article class="juegos">
+                <h4 class="titulo-juego">Red Dead Redemption  <br> PS4</h4>
+                    <img class="juego" src="https://i.pinimg.com/1200x/58/b6/e9/58b6e9bc7801b5a60410a7f75ec6b890.jpg" alt="">
+                    <h6 class="precio-ant">480.000 Gs</h6>
+                    <h5 class="precio-act">240.000 Gs</h5><button class="btn-compra" onclick="añadirAlCarrito('Red Dead Redemption 1 PS4')" class="btn-carrito">Añadir al carrito</button>
+            </article>
+            <article class="juegos">
+                <h4 class="titulo-juego"> <br> Far Cry 6 PS4-PS5</h4>
+                    <img class="juego" src="https://i.pinimg.com/1200x/ca/8b/80/ca8b802ff13813c37a44ebf68d0946a2.jpg" alt="">
+                    <h6 class="precio-ant">450.000 Gs</h6>
+                    <h5 class="precio-act">150.000 Gs</h5><button class="btn-compra" onclick="añadirAlCarrito('Far Cry 6 PS4-PS5')" class="btn-carrito">Añadir al carrito</button>
+            </article>
+        </section>
+        <section class="seccion-juegos">
+            <article class="juegos">
+                <h4 class="titulo-juego">Star Wars Jedi <br> Survivor PS4</h4>
+                    <img class="juego" src="https://i.pinimg.com/736x/8e/44/4b/8e444be0de016ae0d809c4d6d36e62a1.jpg" alt="">
+                    <h6 class="precio-ant">430.000 Gs</h6>
+                    <h5 class="precio-act">155.000 Gs</h5><button class="btn-compra" onclick="añadirAlCarrito('Star Wars Jedi Survivor PS4')" class="btn-carrito">Añadir al carrito</button>
+            </article>
+            <article class="juegos">
+                <h4 class="titulo-juego">Sekiro; Shadown Die <br> Twice  PS4</h4>
+                    <img class="juego" src="https://i.pinimg.com/1200x/48/e8/ca/48e8caea5f121bb774818d30d4bfcc3e.jpg" alt="">
+                    <h6 class="precio-ant">450.000 Gs</h6>
+                    <h5 class="precio-act">150.000 Gs</h5><button class="btn-compra" onclick="añadirAlCarrito('Sekiro: Shadows Die Twice PS4')" class="btn-carrito">Añadir al carrito</button>
+            </article>
+        </section>
+        <section class="seccion-juegos">
+            <article class="juegos">
+                <h4 class="titulo-juego">Prince of persia: The Lost <br> Crown PS4-PS5</h4>
+                    <img class="juego" src="https://i.pinimg.com/736x/f1/c2/09/f1c2097adf188f27e285d7ad47184d82.jpg" alt="">
+                    <h6 class="precio-ant">450.000 Gs</h6>
+                    <h5 class="precio-act">150.000 Gs</h5><button class="btn-compra" onclick="añadirAlCarrito('Prince of Persia: The last Crown PS4-PS5')" class="btn-carrito">Añadir al carrito</button>
+            </article>
+            <article class="juegos">
+                <h4 class="titulo-juego">Sifu PS4-PS5</h4>
+                    <img class="juego" src="https://i.pinimg.com/1200x/48/e8/ca/48e8caea5f121bb774818d30d4bfcc3e.jpg" alt="">
+                    <h6 class="precio-ant">450.000 Gs</h6>
+                    <h5 class="precio-act">140.000 Gs</h5><button class="btn-compra" onclick="añadirAlCarrito('Sifu PS4-PS5')" class="btn-carrito">Añadir al carrito</button>
+            </article>
+        </section>
+        <section class="seccion-juegos">
+            <article class="juegos">
+                <h4 class="titulo-juego">Assasins´s Creed <br> Origins PS4</h4>
+                    <img class="juego" src="https://i.pinimg.com/1200x/ef/55/75/ef557555713c44739623e409cc1234fd.jpg" alt="">
+                    <h6 class="precio-ant">450.000 Gs</h6>
+                    <h5 class="precio-act">120.000 Gs</h5><button class="btn-compra" onclick="añadirAlCarrito('Assasins´s Creed Origins PS4')" class="btn-carrito">Añadir al carrito</button>
+            </article>
+            <article class="juegos">
+                <h4 class="titulo-juego">COD: Black <br> Ops 6 PS4-PS5</h4>
+                    <img class="juego" src="https://i.pinimg.com/736x/83/58/9d/83589d8de990e45c165d25d5cd676bb5.jpg" alt="">
+                    <h6 class="precio-ant">490.000 Gs</h6>
+                    <h5 class="precio-act">260.000 Gs</h5><button class="btn-compra" onclick="añadirAlCarrito('COD: Black Ops 6 PS4-PS5')" class="btn-carrito">Añadir al carrito</button>
+            </article>
+        </section>
+        <section class="seccion-juegos">
+            <article class="juegos">
+                <h4 class="titulo-juego">Marvel Spider-Man <br> Remastered PS5</h4>
+                    <img class="juego" src="https://i.pinimg.com/736x/5b/04/6c/5b046cde622ef751e7308af5d149a763.jpg" alt="">
+                    <h6 class="precio-ant">450.000 Gs</h6>
+                    <h5 class="precio-act">175.000 Gs</h5><button class="btn-compra" onclick="añadirAlCarrito('Marvel Spider-Man Remastered PS5')" class="btn-carrito">Añadir al carrito</button>
+            </article>
+            <article class="juegos">
+                <h4 class="titulo-juego">Hogwarts Legacy <br> PS5</h4>
+                    <img class="juego" src="https://i.pinimg.com/736x/c1/e4/96/c1e4969ad9e07ed87ed2535e0020d12e.jpg" alt="">
+                    <h6 class="precio-ant">450.000 Gs</h6>
+                    <h5 class="precio-act">115.000 Gs</h5><button class="btn-compra" onclick="añadirAlCarrito('Hogwarts Legacy PS5')" class="btn-carrito">Añadir al carrito</button>
+            </article>
+        </section>
+        <section class="seccion-juegos">
+            <article class="juegos">
+                <h4 class="titulo-juego">Detroit Become <br> Human PS4</h4>
+                    <img class="juego" src="https://i.pinimg.com/736x/f9/84/ae/f984aef5e7f55bd716fa4c8373a04ddf.jpg" alt="">
+                    <h6 class="precio-ant">400.000 Gs</h6>
+                    <h5 class="precio-act">195.000 Gs</h5><button class="btn-compra" onclick="añadirAlCarrito('Detroit Become Human PS4')" class="btn-carrito">Añadir al carrito</button>
+            </article>
+            <article class="juegos">
+                <h4 class="titulo-juego">NBA 2k26 <br> PS5</h4>
+                    <img class="juego" src="https://i.pinimg.com/736x/0c/85/e6/0c85e67b9af52a77cf3bd6985c541b81.jpg" alt="">
+                    <h6 class="precio-ant">520.000 Gs</h6>
+                    <h5 class="precio-act">400.000 Gs</h5><button class="btn-compra" onclick="añadirAlCarrito('NBA 2k26')" class="btn-carrito">Añadir al carrito</button>
+            </article>
+        </section>
+        <section class="seccion-juegos">
+            <article class="juegos">
+                <h4 class="titulo-juego">God of War <br> PS4</h4>
+                    <img class="juego" src="https://i.pinimg.com/736x/24/0c/19/240c192ccc500d8d35d05af0b9032618.jpg" alt="">
+                    <h6 class="precio-ant">480.000 Gs</h6>
+                    <h5 class="precio-act">195.000 Gs</h5><button class="btn-compra" onclick="añadirAlCarrito('God Of War PS4')" class="btn-carrito">Añadir al carrito</button>
+            </article>
+            <article class="juegos">
+                <h4 class="titulo-juego">Resident Evil Village <br> PS4</h4>
+                    <img class="juego" src="https://i.pinimg.com/736x/65/8f/e2/658fe24141caf096749b840698a258ea.jpg" alt="">
+                    <h6 class="precio-ant">480.000 Gs</h6>
+                    <h5 class="precio-act">160.000 Gs</h5><button class="btn-compra" onclick="añadirAlCarrito('Resident Evil Village PS4')" class="btn-carrito">Añadir al carrito</button>
+            </article>
+        </section>
+        <div class="paginacion">
+    <div class="paginacion">
+    <button class="boton-pagina" data-pagina="1">1</button>
+    <button class="boton-pagina" data-pagina="2">2</button>
+    <button class="boton-pagina" data-pagina="3">3</button>
+    <button class="boton-pagina" data-pagina="4">4</button>
+    <button class="boton-pagina" data-pagina="5">5</button>
+    <button class="boton-siguiente">Siguiente →</button>
+</div>
+
+        <footer class="footer-basico">
+    <div class="contenido-footer">
+        <p>&copy; 2024 BetalabGamesPy. Todos los derechos reservados.</p>
+        </div>
+    </div>
+</footer>
+    </main>
+</body>
+<script src="../GLOBALE/btncarrito.js"></script>
+<script src="../GLOBALE/btn_flotante.js"></script>
+<script src="..//GLOBALE/comprar.js"></script>
+<script src="../GLOBALE/buscador-global.js"></script>
+<script src="../GLOBALE/carrusel.js"></script>
+<script src="paginacion.js"></script>
+</html>

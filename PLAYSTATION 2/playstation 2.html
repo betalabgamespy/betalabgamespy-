@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playstation 2</title>
+    <link rel="stylesheet" href="Playstation 2.css">
+</head>
+<!-- Botón flotante del carrito -->
+<div class="carrito-flotante" id="carritoFlotante">
+    <button class="btn-carrito-flotante" onclick="toggleCarritoFlotante()">
+        🛒
+        <span class="contador-carrito-flotante" id="contadorCarritoFlotante">0</span>
+    </button>
+    <div class="mini-carrito-flotante" id="miniCarritoFlotante">
+        <div class="header-mini-carrito">
+            <h4>Tu Carrito</h4>
+            <span class="total-mini-carrito" id="totalMiniCarrito">0 Gs</span>
+        </div>
+        <div class="contenido-mini-carrito" id="contenidoMiniCarrito">
+            <!-- Los productos se cargarán aquí -->
+        </div>
+        <div class="footer-mini-carrito">
+            <button class="btn-ver-carrito-completo" onclick="irAlCarrito()">Ver Carrito Completo</button>
+        </div>
+    </div>
+</div>
+<body>
+    <!--Botton flotante-->
+    <div class="floating-contact-tooltip">
+    <button class="floating-btn-tooltip" onclick="toggleTooltipMenu()">
+        <span class="btn-icon">👥</span>
+    </button>
+    
+    <div class="contact-tooltip-menu" id="tooltipMenu">
+        <div class="tooltip-item" onclick="openWhatsApp()">
+            <span class="tooltip-icon"><img src="/ICONOSGLOBALES/icono-whats.png" alt=""></span>
+            <span class="tooltip-text">WhatsApp</span>
+            <div class="tooltip">Chatear por WhatsApp</div>
+        </div>
+        <div class="tooltip-item" onclick="sendEmail()">
+            <span class="tooltip-icon"><img src="/ICONOSGLOBALES/icono-insta.png" alt=""></span>
+            <span class="tooltip-text">Instagram</span>
+            <div class="tooltip">Seguir en Instagram</div>
+        </div>
+        <div class="tooltip-item" onclick="sendEmail()">
+            <span class="tooltip-icon"><img src="/ICONOSGLOBALES/icono-face.png" alt=""></span>
+            <span class="tooltip-text">Facebook</span>
+            <div class="tooltip">Seguir en Facebook</div>
+        </div>
+
+    </div>
+</div>
+
+    <!-- Este es el header -->
+    <header class="header1">
+        <img class="Logoinicio" src="/ICONOSGLOBALES/logo 1.png" alt="Logo">
+        <h4 class="nombremarca1">BETALAB</h4>
+        <h4 class="nombremarca2">GAMES</h4>
+        <h4 class="nombremarca3">PY</h4>
+        </header>
+    <!--Buscador -->
+    <div class="buscador-container">
+        <input type="text" 
+        id="buscador-real-time" 
+        placeholder="🔍 Buscar videojuego...">
+        <div id="resultados-real-time" class="resultados-container"></div>
+    </div>
+    <header class="header2">
+        <div">
+            <a class="navegador" href="/index.html" class="nav-link">Inicio</a>
+            <a class="navegador" href="../PLAYSTATION 3/playstation 3_1.html" class="nav-link">PS3</a>
+            <a class="navegador" href="../PLAYSTATION 4-5/playstation4_1.html" class="nav-link">PS4-PS5</a>
+        </div>
+    </header>
+<h2 class="mas-vendidos">Sección de Playstation 2</h2>
+    <main>
+        <section class="carrusel-container">
+            <div class="juegos-top">
+            <article class="producto-1">
+                    <h4 class="titulo-juego">Pendrive con 4 juegos para PS2</h4>
+                    <img class="juego" src="imagenes/pen16.png" alt="">
+                    <h5 class="precio-act">95.000 Gs</h5>
+                    <button class="btn-compra" onclick="añadirAlCarrito('Pendrive con 4 juegos para PS2')">Añadir al Carrito</button>
+            </article>
+            <article class="producto-1">
+                    <h4 class="titulo-juego">Pendrive con 8 juegos para PS2</h4>
+                    <img class="juego" src="imagenes/pen32.png" alt="">
+                    <h5 class="precio-act">125.000 Gs</h5>
+                    <button class="btn-compra" onclick="añadirAlCarrito('Pendrive con 8 Juegos para PS2', this)">Añadir al Carrito</button>
+            </article>
+            <article class="producto-1">
+                    <h4 class="titulo-juego">Pendrive con 14 juegos para PS2</h4>
+                    <img class="juego" src="imagenes/pen64.png" alt="">
+                    <h5 class="precio-act">155.000 Gs</h5>
+                    <button class="btn-compra" onclick="añadirAlCarrito('Pendrive con 14 Juegos para PS2', this)">Añadir al Carrito</button>
+            </article>
+            <article class="producto-1">
+                    <h4 class="titulo-juego">Pendrive con 20 juegos para PS2</h4>
+                    <img class="juego" src="imagenes/pen128.png" alt="">
+                    <h5 class="precio-act">230.0000 Gs</h5>
+                    <button class="btn-compra" onclick="añadirAlCarrito('Pendrive con 20 Juegos para PS2', this)">Añadir al Carrito</button>
+            </article>
+            <article class="producto-1">
+                    <h4 class="titulo-juego">Pendrive con 26 juegos para PS2</h4>
+                    <img class="juego" src="imagenes/pen128.png" alt="">
+                    <h5 class="precio-act">280.0000 Gs</h5>
+                    <button class="btn-compra" onclick="añadirAlCarrito('Pendrive con 26 Juegos para PS2', this)">Añadir al Carrito</button>
+            </article>
+            <article class="producto-1">
+                    <h4 class="titulo-juego">Pendrive con 30 juegos para PS2</h4>
+                    <img class="juego" src="imagenes/pen128.png" alt="">
+                    <h5 class="precio-act">320.0000 Gs</h5>
+                    <button class="btn-compra" onclick="añadirAlCarrito('Pendrive con 30 Juegos para PS2', this)">Añadir al Carrito</button>
+            </article>
+            <article class="producto-1">
+                    <h4 class="titulo-juego">MEMORY CARD para PS2 con sistema OPL</h4>
+                    <img class="juego" src="imagenes/memorycard.png" alt="">
+                    <h5 class="precio-act">100.0000 Gs</h5>
+                    <button class="btn-compra" onclick="añadirAlCarrito('MEMORY CARD para ps2 con sistema OPL', this)">Añadir al Carrito</button>
+            </article>
+            <article class="producto-1">
+                    <h4 class="titulo-juego">Cable Video PS2</h4>
+                    <img class="juego" src="imagenes/cable video.png" alt="">
+                    <h5 class="precio-act">50.0000 Gs</h5>
+                    <button class="btn-compra" onclick="añadirAlCarrito('Cable Video PS2', this)">Añadir al Carrito</button>
+            </article>
+            <article class="producto-1">
+                    <h4 class="titulo-juego">Mando (genérico) marca PG para PS2</h4>
+                    <img class="juego" src="imagenes/pg.png" alt="">
+                    <h5 class="precio-act">85.0000 Gs</h5>
+                    <button class="btn-compra" onclick="añadirAlCarrito('Mando genérico marca PG para PS2', this)">Añadir al Carrito</button>
+            </article>
+            <article class="producto-1">
+                    <h4 class="titulo-juego">Mando (genérico) marca SONY para PS2</h4>
+                    <img class="juego" src="imagenes/sony.png" alt="">
+                    <h5 class="precio-act">105.0000 Gs</h5>
+                    <button class="btn-compra" onclick="añadirAlCarrito('Mando genérico marca SONY para PS2', this)">Añadir al Carrito</button>
+            </article>
+    </main>
+    
+    <!--Scripts--> 
+<script>
+// Función ESPECIAL para juegos PS2 sueltos en playstation2.html
+function comprarJuegoPS2(nombreJuego) {
+    let precioJuego = 'Consultar precio';
+    
+    const button = event.target;
+    const card = button.closest('.producto-1');
+    
+    if (card) {
+        const h5Precio = card.querySelector('h5.precio-act');
+        if (h5Precio) {
+            precioJuego = h5Precio.textContent.trim();
+        }
+    }
+    
+    localStorage.setItem('juegoSeleccionado', nombreJuego);
+    localStorage.setItem('precioJuego', precioJuego);
+    // Redirigir al formulario ESPECIAL para PS2
+    window.location.href = '/PEDIDOS/pedidosps2.html';
+}
+</script>   </main>
+<footer class="footer-basico">
+    <div class="contenido-footer">
+        <p>&copy; 2024 BetalabGamesPy. Todos los derechos reservados.</p>
+        </div>
+    </div>
+</footer>
+</body>
+<script src="../GLOBALE/btncarrito.js"></script>
+<script src="../GLOBALE/btn_flotante.js"></script>
+<script src="..//GLOBALE/comprar.js"></script>
+<script src="../GLOBALE/buscador-global.js"></script>
+
+</html>
