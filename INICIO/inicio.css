@@ -1,5 +1,5 @@
 body {
-    margin: 0; /* ← ESTA LÍNEA ES CLAVE */
+    margin: 0;
     padding: 0;
     cursor: pointer;
     background-color: #1a1a2e;
@@ -10,8 +10,8 @@ body {
 /* ===== BOTÓN FLOTANTE DEL CARRITO ===== */
 .carrito-flotante {
     position: fixed;
-    bottom: 100px; /* Cambié de 100px a 180px */
-    right: 30px;
+    bottom: 100px;
+    left: 30px;
     z-index: 1000;
 }
 
@@ -57,7 +57,7 @@ body {
 .mini-carrito-flotante {
     position: absolute;
     bottom: 80px;
-    right: 0;
+    left: 0;
     width: 300px;
     background: white;
     border-radius: 15px;
@@ -171,8 +171,8 @@ body {
 /* ===== BOTÓN FLOTANTE DE CONTACTO ===== */
 .floating-contact-tooltip {
     position: fixed;
-    bottom: 30px; /* Se mantiene abajo */
-    right: 30px;
+    bottom: 30px;
+    left: 30px;
     z-index: 1000;
 }
 
@@ -195,7 +195,7 @@ body {
 .contact-tooltip-menu {
     position: absolute;
     bottom: 70px;
-    right: 0;
+    left: 0;
     background: white;
     border-radius: 15px;
     padding: 15px;
@@ -225,13 +225,13 @@ body {
 
 .tooltip-item:hover {
     background: #f8f9fa;
-    transform: translateX(-5px);
+    transform: translateX(5px);
 }
 
 .tooltip-item:hover .tooltip {
     opacity: 1;
     visibility: visible;
-    transform: translateX(-10px);
+    transform: translateX(10px);
 }
 
 .tooltip-icon {
@@ -249,7 +249,8 @@ body {
 
 .tooltip {
     position: absolute;
-    left: -150px;
+    right: -150px;
+    left: auto;
     background: #333;
     color: white;
     padding: 8px 12px;
@@ -265,10 +266,11 @@ body {
 .tooltip::after {
     content: '';
     position: absolute;
-    right: -5px;
+    left: -5px;
+    right: auto;
     top: 50%;
     transform: translateY(-50%);
-    border-left: 5px solid #333;
+    border-right: 5px solid #333;
     border-top: 5px solid transparent;
     border-bottom: 5px solid transparent;
 }
@@ -276,13 +278,13 @@ body {
 /* Responsive para ambos botones flotantes */
 @media (max-width: 768px) {
     .carrito-flotante {
-        bottom: 90px; /* Ajusté para móviles */
-        right: 20px;
+        bottom: 90px;
+        left: 20px;
     }
     
     .floating-contact-tooltip {
         bottom: 20px;
-        right: 20px;
+        left: 20px;
     }
     
     .btn-carrito-flotante {
@@ -299,7 +301,7 @@ body {
     
     .mini-carrito-flotante {
         width: 280px;
-        right: -10px;
+        left: -10px;
         bottom: 70px;
     }
     
@@ -313,8 +315,6 @@ body {
         bottom: 65px;
     }
 }
-
-/* El resto de tu CSS se mantiene igual... */
 
 /*buscador*/
 .buscador-container {
@@ -565,9 +565,9 @@ body {
     color: white;
     padding: 10px;
     text-align: center;
-    width: 100%; /* Cambia de 100vw a 100% */
+    width: 100%;
     margin: 0;
-    box-sizing: border-box; /* ← AÑADE ESTO */
+    box-sizing: border-box;
 }
 /*boton ofertas*/
 .ofertas{
@@ -685,16 +685,16 @@ body {
 /*ultima parte de la pag*/
 .fondo{
     text-align: center;
-    width: 100%;            /* Ancho completo del contenedor */
+    width: 100%;
     max-width: 500px; 
-    height: auto;           /* ← QUITA el height fijo */
-    aspect-ratio: 1 / 1;    /* Relación 1:1 = cuadrado perfecto */
+    height: auto;
+    aspect-ratio: 1 / 1;
     background-image: url(https://i.pinimg.com/1200x/5b/64/d4/5b64d490ece1575949c2b358d57739a0.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     padding: 20px;
-    margin: 0 auto;         /* Centra el elemento */
+    margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -715,6 +715,7 @@ body {
     transition: 1s;
     transform: scale(1,1);
 }
+
 
 
 
