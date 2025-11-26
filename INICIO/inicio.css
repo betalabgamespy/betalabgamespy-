@@ -565,7 +565,11 @@ body{
     color: white;
     padding: 10px;
     text-align: center;
-    width: 100%;
+    width: 100vw; /* ← Ancho completo de la pantalla */
+    margin: 0;
+    position: relative;
+    left: 0;
+    right: 0;
 }
 /*boton ofertas*/
 .ofertas{
@@ -712,6 +716,7 @@ body{
     transition: 1s;
     transform: scale(1,1);
 }
+
 
 
 
