@@ -88,7 +88,7 @@
             "id": 15,
             "Nombre": "Metal Geard Solid 4",
             "precio": "40.000",
-            "imagen": "hhttps://romsfun.com/wp-content/uploads/2019/10/Metal-Gear-Solid-4.jpg"
+            "imagen": "https://romsfun.com/wp-content/uploads/2019/10/Metal-Gear-Solid-4.jpg"
         },
         {
             "id": 16,
@@ -218,7 +218,7 @@
         },
         {
             "id": 37,
-            "Nombre": "Metal Geard Solid HD Collection",
+            "Nombre": "MGS HD Collection",
             "precio": "100.000",
             "imagen": "https://romsfun.com/wp-content/uploads/2019/10/metal-gear-solid-hd-collection-ps3-300x344.png"
         },
@@ -236,7 +236,7 @@
         },
         {
             "id": 40,
-            "Nombre": "Dragon Ball Raging BLast 2",
+            "Nombre": "DB Raging Blast 2",
             "precio": "40.000",
             "imagen": "https://romsfun.com/wp-content/uploads/2019/10/Dragon-Ball-Raging-Blast-2-ps3.png"
         },
@@ -487,4 +487,5 @@
             "imagen": "https://romsfun.com/wp-content/uploads/2019/10/Ghosts-ps3.png"
         }
     ]
+
 }
