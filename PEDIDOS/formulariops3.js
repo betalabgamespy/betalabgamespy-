@@ -216,5 +216,5 @@ function actualizarMontoTransferencia(precio) {
 
 // Hacer funciones globales
 window.vaciarCarrito = vaciarCarrito;
-
 window.enviarAGmail = enviarAGmail;
+
