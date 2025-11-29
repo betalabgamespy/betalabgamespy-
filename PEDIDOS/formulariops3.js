@@ -177,7 +177,7 @@ function enviarAGmail(event) {
     cuerpoMensaje += `📎 IMPORTANTE: El cliente confirma que realizará/habrá realizado la transferencia y adjuntará el comprobante en este correo.`;
 
     // Enviar por Gmail
-    const emailDestino = 'betalabgamespy@gmail.com';
+    const emailDestino = 'betalabgamespedidos@gmail.com';
     const asunto = `🎮 PEDIDO - ${nombre} ${apellido}`;
     const mailtoLink = `mailto:${emailDestino}?subject=${encodeURIComponent(asunto)}&body=${encodeURIComponent(cuerpoMensaje)}`;
     
@@ -216,4 +216,5 @@ function actualizarMontoTransferencia(precio) {
 
 // Hacer funciones globales
 window.vaciarCarrito = vaciarCarrito;
+
 window.enviarAGmail = enviarAGmail;
