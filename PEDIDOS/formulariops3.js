@@ -140,8 +140,8 @@ function calcularTotalCarrito(carrito) {
     return total;
 }
 
-// FUNCIÓN SIMPLE PARA ENVIAR A GMAIL
-function enviarAGmail(event) {
+// FUNCIÓN SIMPLE PARA ENVIAR A GMAIL (PARA PS3)
+function enviarAGmailPS3(event) {
     event.preventDefault();
     
     // Obtener datos del formulario
@@ -157,7 +157,7 @@ function enviarAGmail(event) {
     const totalFormateado = formatearNumeroConCeros(total) + ' Gs';
     
     // Crear mensaje para Gmail
-    let cuerpoMensaje = `NUEVO PEDIDO - BETALAB GAMES PY\n\n`;
+    let cuerpoMensaje = `NUEVO PEDIDO PS3 - BETALAB GAMES PY\n\n`;
     cuerpoMensaje += `INFORMACIÓN DEL CLIENTE:\n`;
     cuerpoMensaje += `Nombre: ${nombre} ${apellido}\n`;
     cuerpoMensaje += `Email: ${email}\n`;
@@ -178,10 +178,10 @@ function enviarAGmail(event) {
 
     // Enviar por Gmail
     const emailDestino = 'betalabgamespedidos@gmail.com';
-    const asunto = `🎮 PEDIDO - ${nombre} ${apellido}`;
+    const asunto = `🎮 PEDIDO PS3 - ${nombre} ${apellido}`;
     const mailtoLink = `mailto:${emailDestino}?subject=${encodeURIComponent(asunto)}&body=${encodeURIComponent(cuerpoMensaje)}`;
     
-    // Mostrar alerta con instrucciones claras - ESTO SE EJECUTA CADA VEZ
+    // Mostrar alerta con instrucciones claras
     alert(`📧 SE ABRIRÁ GMAIL\n\n📎 INSTRUCCIONES IMPORTANTES:\n\n1. Se abrirá Gmail automáticamente\n2. Revisa que todos los datos estén correctos\n3. \n✅ Te estaremos contactando en el transcurso del día`);
     
     // Abrir cliente de correo
@@ -200,10 +200,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const total = calcularTotalCarrito(carrito);
     actualizarMontoTransferencia(formatearNumeroConCeros(total) + ' Gs');
     
-    // Agregar event listener al formulario
-    const formulario = document.getElementById('formPedidos');
-    if (formulario) {
-        formulario.addEventListener('submit', enviarAGmail);
+    // Agregar event listener al formulario PS3
+    const formularioPS3 = document.getElementById('formPedidosPS3');
+    if (formularioPS3) {
+        formularioPS3.addEventListener('submit', enviarAGmailPS3);
     }
 });
 
@@ -216,5 +216,4 @@ function actualizarMontoTransferencia(precio) {
 
 // Hacer funciones globales
 window.vaciarCarrito = vaciarCarrito;
-window.enviarAGmail = enviarAGmail;
-
+window.enviarAGmailPS3 = enviarAGmailPS3;
