@@ -199,12 +199,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Actualizar monto
     const total = calcularTotalCarrito(carrito);
     actualizarMontoTransferencia(formatearNumeroConCeros(total) + ' Gs');
-    
-    // Agregar event listener al formulario PS3
-    const formularioPS3 = document.getElementById('formPedidosPS3');
-    if (formularioPS3) {
-        formularioPS3.addEventListener('submit', enviarAGmailPS3);
-    }
 });
 
 function actualizarMontoTransferencia(precio) {
@@ -217,3 +211,4 @@ function actualizarMontoTransferencia(precio) {
 // Hacer funciones globales
 window.vaciarCarrito = vaciarCarrito;
 window.enviarAGmailPS3 = enviarAGmailPS3;
+
