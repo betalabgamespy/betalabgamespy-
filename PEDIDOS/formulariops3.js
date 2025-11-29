@@ -139,9 +139,11 @@ function calcularTotalCarrito(carrito) {
     return total;
 }
 
-// FUNCIÓN SIMPLE PARA ENVIAR A GMAIL
+// FUNCIÓN SIMPLE PARA ENVIAR A GMAIL - CORREGIDA
 function enviarAGmail(event) {
     event.preventDefault();
+    
+    console.log('🔴 Función enviarAGmail ejecutándose...');
     
     // Obtener datos del formulario
     const nombre = document.getElementById('nombre').value;
@@ -150,7 +152,9 @@ function enviarAGmail(event) {
     const email = document.getElementById('email').value;
     const mensaje = document.getElementById('mensaje').value;
     
-    // VALIDAR CAMPOS OBLIGATORIOS - AGREGADO
+    console.log('📝 Datos del formulario:', { nombre, apellido, telefono, email });
+    
+    // VALIDAR CAMPOS OBLIGATORIOS
     if (!nombre || !apellido || !telefono || !email) {
         alert('❌ Por favor, complete todos los campos obligatorios');
         return;
@@ -158,8 +162,9 @@ function enviarAGmail(event) {
     
     // Obtener carrito
     const carrito = obtenerDatosCarrito();
+    console.log('🛒 Carrito actual:', carrito);
     
-    // VALIDAR CARRITO NO VACÍO - AGREGADO
+    // VALIDAR CARRITO NO VACÍO
     if (carrito.length === 0) {
         alert('❌ El carrito está vacío. Agregue juegos antes de enviar el pedido.');
         return;
@@ -193,22 +198,33 @@ function enviarAGmail(event) {
     const asunto = `🎮 PEDIDO - ${nombre} ${apellido}`;
     const mailtoLink = `mailto:${emailDestino}?subject=${encodeURIComponent(asunto)}&body=${encodeURIComponent(cuerpoMensaje)}`;
     
-    // ALERTA CORREGIDA - ELIMINADO EL TEXTO INCOMPLETO
-    alert(`📧 SE ABRIRÁ GMAIL\n\n📎 INSTRUCCIONES IMPORTANTES:\n\n1. Se abrirá Gmail automáticamente\n2. Revisa que todos los datos estén correctos\n3. Presiona ENVIAR para completar tu pedido\n\n✅ Te estaremos contactando en el transcurso del día`);
+    console.log('📧 Mailto link creado:', mailtoLink);
     
-    // Abrir cliente de correo
-    window.location.href = mailtoLink;
+    // PRIMERO vaciar el carrito y mostrar alerta
+    vaciarCarrito();
     
-    // VACIAR CARRITO DESPUÉS DE ENVIAR - AGREGADO
+    // LUEGO abrir Gmail
     setTimeout(() => {
-        vaciarCarrito();
-    }, 1000);
+        alert(`📧 SE ABRIRÁ GMAIL\n\n📎 INSTRUCCIONES IMPORTANTES:\n\n1. Se abrirá Gmail automáticamente\n2. Revisa que todos los datos estén correctos\n3. Presiona ENVIAR para completar tu pedido\n\n✅ Te estaremos contactando en el transcurso del día`);
+        
+        // Abrir Gmail en una nueva pestaña para no interrumpir
+        window.open(mailtoLink, '_blank');
+        
+        // Opcional: también redirigir después de un tiempo
+        setTimeout(() => {
+            window.location.href = mailtoLink;
+        }, 100);
+        
+    }, 500);
 }
 
 // Al cargar la página
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('🟢 Página cargada, inicializando carrito...');
+    
     // Obtener carrito
     carrito = obtenerDatosCarrito();
+    console.log('🛒 Carrito al cargar:', carrito);
     
     // Mostrar resumen
     mostrarResumenCarrito(carrito);
@@ -220,7 +236,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Agregar event listener al formulario
     const formulario = document.getElementById('formPedidos');
     if (formulario) {
+        console.log('✅ Formulario encontrado, agregando event listener');
         formulario.addEventListener('submit', enviarAGmail);
+    } else {
+        console.log('❌ Formulario NO encontrado');
     }
 });
 
@@ -234,5 +253,3 @@ function actualizarMontoTransferencia(precio) {
 // Hacer funciones globales
 window.vaciarCarrito = vaciarCarrito;
 window.enviarAGmail = enviarAGmail;
-
-
