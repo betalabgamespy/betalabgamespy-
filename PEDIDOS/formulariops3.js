@@ -174,15 +174,15 @@ function enviarAGmail(event) {
     
     cuerpoMensaje += `TOTAL: ${totalFormateado}\n\n`;
     cuerpoMensaje += `Fecha: ${new Date().toLocaleString('es-PY')}\n\n`;
-    cuerpoMensaje += `📎 IMPORTANTE: El cliente confirma que realizará/habrá realizado la transferencia y adjuntará el comprobante en este correo.`;
+    cuerpoMensaje += `📎 IMPORTANTE: Recuerde que debe acercar la consola al local para la instalación de los juegos.`;
 
     // Enviar por Gmail
-    const emailDestino = 'betalabgamespedidos@gmail.com';
+    const emailDestino = 'betalabgamespy@gmail.com';
     const asunto = `🎮 PEDIDO - ${nombre} ${apellido}`;
     const mailtoLink = `mailto:${emailDestino}?subject=${encodeURIComponent(asunto)}&body=${encodeURIComponent(cuerpoMensaje)}`;
     
     // Mostrar alerta con instrucciones claras - ESTO SE EJECUTA CADA VEZ
-    alert(`📧 SE ABRIRÁ GMAIL\n\n📎 INSTRUCCIONES IMPORTANTES:\n\n1. Se abrirá Gmail automáticamente\n2. DEBES ADJUNTAR MANUALMENTE la foto del comprobante de transferencia\n3. Revisa que todos los datos estén correctos\n4. Envía el correo con el comprobante adjunto\n\n✅ El pedido se procesará una vez recibido el comprobante`);
+    alert(`📧 SE ABRIRÁ GMAIL\n\n📎 INSTRUCCIONES IMPORTANTES:\n\n1. Se abrirá Gmail automáticamente\n2. Revisa que todos los datos estén correctos\n3. \n✅ Te estaremos contactando en el transcurso del día`);
     
     // Abrir cliente de correo
     window.location.href = mailtoLink;
@@ -216,5 +216,4 @@ function actualizarMontoTransferencia(precio) {
 
 // Hacer funciones globales
 window.vaciarCarrito = vaciarCarrito;
-
 window.enviarAGmail = enviarAGmail;
