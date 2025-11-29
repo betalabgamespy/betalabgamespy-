@@ -254,7 +254,7 @@ function enviarAGmail(event) {
     }
     
     // Enviar por Gmail
-    const emailDestino = 'betalabgamespy@gmail.com'; // CAMBIA POR TU GMAIL
+    const emailDestino = 'betalabgamespedidos@gmail.com'; // CAMBIA POR TU GMAIL
     const asunto = carrito.length > 0 ? 
         `🎮 PEDIDO CARRITO - ${nombre} ${apellido}` : 
         `🎮 PEDIDO PS2 - ${nombre} ${apellido}`;
@@ -292,4 +292,5 @@ window.obtenerDatosCarrito = obtenerDatosCarrito;
 window.mostrarResumenCarrito = mostrarResumenCarrito;
 
 console.log('✅ formulariops2.js cargado - ENVÍO A GMAIL CONFIGURADO');
+
 
